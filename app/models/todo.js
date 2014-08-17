@@ -3,7 +3,8 @@ import DS from 'ember-data';
 
 var Todo = DS.Model.extend({
   title: DS.attr('string'),
-  isCompleted: DS.attr('boolean')
+  isCompleted: DS.attr('boolean'),
+  rev: DS.attr('string')
 });
 
 Todo.reopenClass({
