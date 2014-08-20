@@ -34,17 +34,33 @@ export default Ember.ArrayController.extend({
         return;
       }
 
+      var author = this.store.createRecord('author', {
+        name: 'Some author #' + Math.random()
+      });
+
       // Create the new Todo model
       var todo = this.store.createRecord('todo', {
         title: title,
         isCompleted: false
       });
 
+
       // Clear the "New Todo" text field
       this.set('newTitle', '');
 
       // Save the new model
-      todo.save();
+      todo.save().then(function () {
+        return author.save();
+      }).then(function () {
+        todo.set('author', author);
+        return todo.save();
+      }).then(function () {
+        author.set('todos').pushObject(todo);
+        return author.save();
+      }).catch(function (err) {
+        console.log(err);
+      });
+
     },
 
     clearCompleted: function () {

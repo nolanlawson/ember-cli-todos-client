@@ -6,7 +6,8 @@ var app = new EmberApp();
 
 app.import('vendor/pouchdb/dist/pouchdb.js');
 app.import('vendor/relational-pouch/dist/pouchdb.relational-pouch.js');
-app.import('vendor/ember-pouch/dist/globals/main.js');
+//app.import('vendor/ember-pouch/dist/globals/main.js');
+app.import('vendor/ember-pouch-dev/globals/main.js');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
