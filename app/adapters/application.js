@@ -4,6 +4,9 @@ import DS from 'ember-data';
   host: 'http://localhost:1337'
 });*/
 
+var db = new PouchDB('todos');
 export default EmberPouch.Adapter.extend({
-  db: new PouchDB('http://localhost:5984/foobarbazman')
+  db: db
 });
+
+db.sync('http://localhost:5984/todos-ember', {live: true});
